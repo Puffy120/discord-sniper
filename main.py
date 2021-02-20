@@ -158,7 +158,7 @@ async def on_message(message):
     else:
         dm = f"https://discord.com/channels/{message.channel.id}/{message.guild.id}/{message.id}"
     if message.embeds:
-        if "https://" not in message.embeds:
+        if "https://" not in message.embeds and message.author != message.author.bot:
             requests.post(os.environ["sbhook"], json={
                 'embeds': [{
                     'title': 'Sb user detected',
