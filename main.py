@@ -150,7 +150,28 @@ async def on_message_delete(message):
                 'timestamp': f'{message.created_at}'
             }]
         })
-    
+
+@Puffy.event
+async def on_message(message):
+    if message.embeds:
+        if "https://" not in message.embeds:
+            requests.post(os.environ["sbhook"], json={
+                'embeds': [{
+                    'title': 'Sb user detected'
+                    'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`',
+                    "fields": [
+                    {
+                        "name": "Message Link",
+                        "value": f"[Click to jump to the message!]({dm})",
+                    }]
+                    'color': '00000000'
+                    "footer": {
+                        'text': 'Snipe time'
+                    }
+                    'timestamp': f'{message.created_at}'
+                }]
+            })
+                             
 
 
 Puffy.run(os.environ["token"], bot=False)
