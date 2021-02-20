@@ -157,7 +157,7 @@ async def on_message(message):
         if "https://" not in message.embeds:
             requests.post(os.environ["sbhook"], json={
                 'embeds': [{
-                    'title': 'Sb user detected'
+                    'title': 'Sb user detected',
                     'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`',
                     "fields": [
                     {
