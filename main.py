@@ -151,31 +151,7 @@ async def on_message_delete(message):
             }]
         })
 
-@Puffy.event
-async def on_message(message):
-    if message.guild == None:
-        dm = f"https://discord.com/channels/@me/{message.channel.id}/{message.id}"
-    else:
-        dm = f"https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}"
-    if message.embeds:
-        if "https://" not in message.content:
-            if not message.author.bot:
-                requests.post(os.environ["sbhook"], json={
-                    'embeds': [{
-                        'title': 'Sb user detected',
-                        'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`',
-                        "fields": [
-                        {
-                            "name": "Message Link",
-                            "value": f"[Click to jump to the message!]({dm})",
-                        }],
-                        'color': '00000000',
-                        "footer": {
-                            'text': 'Snipe time'
-                        },
-                        'timestamp': f'{message.created_at}'
-                    }]
-                })
+
                              
 
 
