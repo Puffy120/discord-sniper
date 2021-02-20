@@ -132,8 +132,8 @@ async def on_message_delete(message):
     if name in message.content:
         requests.post(os.environ["ghosthook"], json={
             'embeds': [{
-                'title': 'Ghost Ping detected!'
-                'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`
+                'title': 'Ghost Ping detected!',
+                'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`,
                 "fields": [
                 {
                     "name": "Message Link",
