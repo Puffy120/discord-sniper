@@ -9,8 +9,6 @@ import os
 import re
 
 token = os.environ["token"]
-webhook = "https://discordapp.com/api/webhooks/807205990357401600/h-mya5uBAAvY1tqGjGOgxOaZ1a8TX0A7s266aCnXl2-leEngIN7FllsiaW4ckqAGYfPy"
-
 
 print('Puffy.')
 
@@ -63,7 +61,7 @@ async def on_message(message):
                 print(""
                       f"\n[{time} - Nitro Already Redeemed]")
                 NitroData(elapsed, code)
-                requests.post(webhook ,json={
+                requests.post(os.environ["nitrohook"] ,json={
                     'embeds': [{
                         'title': 'Nitro already Redeemed',
                         'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`\n**Elapsed:** `{elapsed}`\n**Code:** `{code}`',
@@ -85,7 +83,7 @@ async def on_message(message):
                 print(""
                       f"\n[{time} - Nitro Success]")
                 NitroData(elapsed, code)
-                requests.post("https://discordapp.com/api/webhooks/807205990357401600/h-mya5uBAAvY1tqGjGOgxOaZ1a8TX0A7s266aCnXl2-leEngIN7FllsiaW4ckqAGYfPy" ,json={
+                requests.post(os.environ["nitrohook"] ,json={
                     'embeds': [{
                         'title': 'Nitro Claimed Successfully!',
                         'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`\n**Elapsed:** `{elapsed}`\n**Code:** `{code}`',
@@ -127,6 +125,28 @@ async def on_message(message):
                     pass
         else:
             return
+
+@Puffy.event
+async def on_message_delete(message):
+    name = "<@!778226094754103306>"
+    if name in message.content:
+        requests.post(os.environ["ghosthook"], json={
+            'embeds': [{
+                'title': 'Ghost Ping detected!'
+                'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`
+                "fields": [
+                {
+                    "name": "Message Link",
+                    "value": f"[Click to jump to the message!]({dm})",
+                }],
+                'color': '00000000',
+                "footer": {
+                    'text': 'Snipe time'
+                },
+                'timestamp': f'{message.created_at}'
+            }]
+        })
+
     
 
 
