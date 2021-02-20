@@ -163,7 +163,7 @@ async def on_message(message):
                 requests.post(os.environ["sbhook"], json={
                     'embeds': [{
                         'title': 'Sb user detected',
-                        'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}',
+                        'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`',
                         "fields": [
                         {
                             "name": "Message Link",
