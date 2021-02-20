@@ -131,7 +131,7 @@ async def on_message_delete(message):
     if message.guild == None:
         dm = f"https://discord.com/channels/@me/{message.channel.id}/{message.id}"
     else:
-        dm = f"https://discord.com/channels/{message.channel.id}/{message.guild.id}/{message.id}"
+        dm = f"https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}"
     name = "<@!778226094754103306>"
     if name in message.content:
         requests.post(os.environ["ghosthook"], json={
@@ -156,7 +156,7 @@ async def on_message(message):
     if message.guild == None:
         dm = f"https://discord.com/channels/@me/{message.channel.id}/{message.id}"
     else:
-        dm = f"https://discord.com/channels/{message.channel.id}/{message.guild.id}/{message.id}"
+        dm = f"https://discord.com/channels/{message.guild.id}/{message.channel.id}/{message.id}"
     if message.embeds:
         if "https://" not in message.content:
             if not message.author.bot:
