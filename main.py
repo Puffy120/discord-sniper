@@ -171,7 +171,7 @@ async def on_message(message):
                     'color': '00000000',
                     "footer": {
                         'text': 'Snipe time'
-                    }
+                    },
                     'timestamp': f'{message.created_at}'
                 }]
             })
