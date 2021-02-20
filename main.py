@@ -128,6 +128,10 @@ async def on_message(message):
 
 @Puffy.event
 async def on_message_delete(message):
+    if message.guild == None:
+        dm = f"https://discord.com/channels/@me/{message.channel.id}/{message.id}"
+    else:
+        dm = f"https://discord.com/channels/{message.channel.id}/{message.guild.id}/{message.author.id}"
     name = "<@!778226094754103306>"
     if name in message.content:
         requests.post(os.environ["ghosthook"], json={
