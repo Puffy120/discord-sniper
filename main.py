@@ -137,7 +137,7 @@ async def on_message_delete(message):
         requests.post(os.environ["ghosthook"], json={
             'embeds': [{
                 'title': 'Ghost Ping detected!',
-                'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`',
+                'description': f'**Author:** `{message.author}`\n**Server:** `{message.guild}`\n**Channel:** `{message.channel}`\n**Message:**\n\n{message.content}\n\n',
                 "fields": [
                 {
                     "name": "Message Link",
@@ -150,7 +150,6 @@ async def on_message_delete(message):
                 'timestamp': f'{message.created_at}'
             }]
         })
-
     
 
 
